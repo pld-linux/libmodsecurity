@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# static library
+
 Summary:	A library that loads/interprets rules written in the ModSecurity SecRules
 Name:		libmodsecurity
 Version:	3.0.12
@@ -16,6 +20,7 @@ BuildRequires:	libxml2-devel
 BuildRequires:	lua54-devel
 BuildRequires:	pcre-devel
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRequires:	ssdeep-devel
 BuildRequires:	yajl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -53,6 +58,7 @@ This package contains the static library used for development.
 %{__autoconf}
 %{__automake}
 %configure \
+		%{__enable_disable static_libs static} \
 		--with-lua=%{_prefix}
 
 %{__make}
@@ -83,6 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/modsecurity
 %{_pkgconfigdir}/modsecurity.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libmodsecurity.a
+%endif
