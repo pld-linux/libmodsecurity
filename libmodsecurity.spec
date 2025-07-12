@@ -5,7 +5,7 @@
 Summary:	A library that loads/interprets rules written in the ModSecurity SecRules
 Name:		libmodsecurity
 Version:	3.0.12
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries
 Source0:	https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
