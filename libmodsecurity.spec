@@ -4,12 +4,12 @@
 
 Summary:	A library that loads/interprets rules written in the ModSecurity SecRules
 Name:		libmodsecurity
-Version:	3.0.12
-Release:	2
+Version:	3.0.14
+Release:	1
 License:	Apache v2.0
 Group:		Libraries
 Source0:	https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
-# Source0-md5:	c0d54da2eb4d93fd80ff31235a7398da
+# Source0-md5:	b390cca4b62c6d6d35521fba9cf29c69
 URL:		https://www.modsecurity.org/
 BuildRequires:	GeoIP-devel
 BuildRequires:	autoconf >= 2.64
