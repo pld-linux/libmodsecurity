@@ -1,0 +1,21 @@
+--- modsecurity-v3.0.16/test/test-cases/regression/config-secremoterules.json.orig
++++ modsecurity-v3.0.16/test/test-cases/regression/config-secremoterules.json
+@@ -1,6 +1,6 @@
+ [
+   {
+-    "enabled": 1,
++    "enabled": 0,
+     "version_min": 300000,
+     "title": "Include remote rules",
+     "resource": "curl",
+--- modsecurity-v3.0.16/test/test-cases/regression/operator-ipMatchFromFile.json.orig
++++ modsecurity-v3.0.16/test/test-cases/regression/operator-ipMatchFromFile.json
+@@ -92,7 +92,7 @@
+     ]
+   },
+   {
+-    "enabled": 1,
++    "enabled": 0,
+     "version_min": 300000,
+     "title": "Testing Operator :: @ipMatchFromFile - https",
+     "resource": "curl",

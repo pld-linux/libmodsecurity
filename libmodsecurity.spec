@@ -6,11 +6,13 @@
 Summary:	A library that loads/interprets rules written in the ModSecurity SecRules
 Name:		libmodsecurity
 Version:	3.0.16
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries
 Source0:	https://github.com/owasp-modsecurity/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
 # Source0-md5:	2b7fc54703947e6d34483e60f8b54b45
+# 2 test cases fetch rules over https; builders have no network
+Patch0:		%{name}-tests-offline.patch
 URL:		https://www.modsecurity.org/
 BuildRequires:	GeoIP-devel
 BuildRequires:	autoconf >= 2.69
@@ -53,6 +55,7 @@ This package contains the static library used for development.
 
 %prep
 %setup -q -n modsecurity-v%{version}
+%patch -P0 -p1
 
 %build
 %{__aclocal}
