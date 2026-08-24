@@ -1,24 +1,25 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# static library
+%bcond_without	tests		# unit and regression tests
 
 Summary:	A library that loads/interprets rules written in the ModSecurity SecRules
 Name:		libmodsecurity
-Version:	3.0.14
-Release:	2
+Version:	3.0.16
+Release:	1
 License:	Apache v2.0
 Group:		Libraries
-Source0:	https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
-# Source0-md5:	b390cca4b62c6d6d35521fba9cf29c69
+Source0:	https://github.com/owasp-modsecurity/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
+# Source0-md5:	2b7fc54703947e6d34483e60f8b54b45
 URL:		https://www.modsecurity.org/
 BuildRequires:	GeoIP-devel
-BuildRequires:	autoconf >= 2.64
+BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake
 BuildRequires:	curl-devel
 BuildRequires:	libmaxminddb-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	lua54-devel
-BuildRequires:	pcre-devel
+BuildRequires:	pcre2-8-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRequires:	ssdeep-devel
@@ -34,7 +35,7 @@ in the ModSecurity SecRules format and apply them to HTTP content
 provided by your application via Connectors.
 
 %package devel
-Summary:	Header files and develpment documentation for libmodsecurity
+Summary:	Header files and development documentation for libmodsecurity
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -62,6 +63,10 @@ This package contains the static library used for development.
 		--with-lua=%{_prefix}
 
 %{__make}
+
+%if %{with tests}
+%{__make} -j1 check
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
