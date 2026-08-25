@@ -6,7 +6,7 @@
 Summary:	A library that loads/interprets rules written in the ModSecurity SecRules
 Name:		libmodsecurity
 Version:	3.0.16
-Release:	2
+Release:	3
 License:	Apache v2.0
 Group:		Libraries
 Source0:	https://github.com/owasp-modsecurity/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
@@ -77,6 +77,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -p unicode.mapping $RPM_BUILD_ROOT%{_datadir}/%{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -85,10 +88,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGES README.md SECURITY.md
+%doc AUTHORS CHANGES README.md SECURITY.md modsecurity.conf-recommended
 %attr(755,root,root) %{_bindir}/modsec-rules-check
 %attr(755,root,root) %{_libdir}/libmodsecurity.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libmodsecurity.so.3
+%{_datadir}/%{name}
 
 %files devel
 %defattr(644,root,root,755)
