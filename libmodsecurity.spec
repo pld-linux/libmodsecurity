@@ -5,12 +5,12 @@
 
 Summary:	A library that loads/interprets rules written in the ModSecurity SecRules
 Name:		libmodsecurity
-Version:	3.0.16
-Release:	4
+Version:	3.0.17
+Release:	1
 License:	Apache v2.0
 Group:		Libraries
 Source0:	https://github.com/owasp-modsecurity/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
-# Source0-md5:	2b7fc54703947e6d34483e60f8b54b45
+# Source0-md5:	2ae3ec5fa4a605c05eba7bfff86a203f
 # 2 test cases fetch rules over https; builders have no network
 Patch0:		%{name}-tests-offline.patch
 URL:		https://www.modsecurity.org/
